@@ -1,0 +1,6 @@
+org/w3/_2001/xmlschema/Adapter1.class
+com/vinicola/App.class
+br/com/vinicola/vinhos/CadastrarVinhoRequest.class
+br/com/vinicola/vinhos/ObjectFactory.class
+br/com/vinicola/vinhos/CadastrarVinhoResponse.class
+br/com/vinicola/vinhos/package-info.class
