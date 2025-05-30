@@ -60,8 +60,8 @@
         <sources>
             <source>src/main/resources/xsd/vinho.xsd</source>
         </sources>
-        <outputDirectory>${basedir}/target/classes</outputDirectory>
-        <clearOutputDir>false</clearOutputDir>
+        <clearOutputDir>true</clearOutputDir>
+        <readOnly>true</readOnly>
     </configuration>
     <executions>
         <execution>
