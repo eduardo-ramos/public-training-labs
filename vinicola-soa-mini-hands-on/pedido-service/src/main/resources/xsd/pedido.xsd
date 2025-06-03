@@ -1,0 +1,46 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            xmlns:pd="http://rocknewventures.com.br/servicos/pedidos"
+           targetNamespace="http://rocknewventures.com.br/servicos/pedidos"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="Pedido">
+        <xs:sequence>
+            <xs:element name="idCliente" type="xs:int"/>
+            <xs:element name="codigoProduto" type="xs:string"/>
+            <xs:element name="quantidade" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="CriarPedidoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pedido" type="pd:Pedido"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="CriarPedidoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codigoPedido" type="xs:ID" />
+                <xs:element name="status" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ListarPedidosRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codigoPedido" type="xs:ID" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ListarPedidosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pedido" type="pd:Pedido" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
