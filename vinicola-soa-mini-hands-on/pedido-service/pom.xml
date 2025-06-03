@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>br.com.rocknewventures</groupId>
@@ -12,9 +13,9 @@
   </properties>
   <dependencies>
     <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web-services</artifactId>
-        <version>3.3.12</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web-services</artifactId>
+      <version>3.3.12</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -22,10 +23,17 @@
       <version>3.3.12</version>
       <scope>test</scope>
     </dependency>
+    <!-- Lombok -->
     <dependency>
-        <groupId>wsdl4j</groupId>
-        <artifactId>wsdl4j</artifactId>
-        <version>1.6.3</version>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+      <version>1.18.36</version>
+    </dependency>
+    <dependency>
+      <groupId>wsdl4j</groupId>
+      <artifactId>wsdl4j</artifactId>
+      <version>1.6.3</version>
     </dependency>
     <dependency>
       <groupId>com.sun.xml.ws</groupId>
@@ -33,10 +41,10 @@
       <version>4.0.3</version>
       <scope>provided</scope>
     </dependency>
-</dependencies>
-<build>
-  <plugins>
-    <plugin>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <version>3.3.12</version>
@@ -47,31 +55,31 @@
             </goals>
           </execution>
         </executions>
-    </plugin>
-    <plugin>
-    <groupId>org.codehaus.mojo</groupId>
-    <artifactId>jaxb2-maven-plugin</artifactId>
-    <version>3.3.0</version>
-    <configuration>
-        <!-- <schemaDirectory>src/main/resources/xsd</schemaDirectory> -->
-        <xjbSources>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jaxb2-maven-plugin</artifactId>
+        <version>3.3.0</version>
+        <configuration>
+          <!-- <schemaDirectory>src/main/resources/xsd</schemaDirectory> -->
+          <xjbSources>
             <xjbSource>${project.basedir}/src/main/resources/global.xjb</xjbSource>
-        </xjbSources>
-        <sources>
+          </xjbSources>
+          <sources>
             <source>${project.basedir}/src/main/resources/xsd/pedido.xsd</source>
-        </sources>
-        <clearOutputDir>true</clearOutputDir>
-        <readOnly>true</readOnly>
-    </configuration>
-    <executions>
-        <execution>
+          </sources>
+          <clearOutputDir>true</clearOutputDir>
+          <readOnly>true</readOnly>
+        </configuration>
+        <executions>
+          <execution>
             <id>xjc</id>
             <goals>
-                <goal>xjc</goal>
+              <goal>xjc</goal>
             </goals>
-        </execution>
-    </executions>
-    </plugin>
-  </plugins>
-</build>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

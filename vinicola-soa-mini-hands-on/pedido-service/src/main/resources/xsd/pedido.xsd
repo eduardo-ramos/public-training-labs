@@ -1,6 +1,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-            xmlns:pd="http://rocknewventures.com.br/servicos/pedidos"
-           targetNamespace="http://rocknewventures.com.br/servicos/pedidos"
+            xmlns:pd="http://rocknewventures.com.br/pedidos"
+           targetNamespace="http://rocknewventures.com.br/pedidos"
            elementFormDefault="qualified">
 
     <xs:complexType name="Pedido">

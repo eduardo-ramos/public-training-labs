@@ -12,9 +12,16 @@ import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
+import br.com.rocknewventures.pedidoservice.config.properties.WebServiceConfigProperties;
+import lombok.RequiredArgsConstructor;
+
 @EnableWs
 @Configuration
+@RequiredArgsConstructor
 public class WebServiceConfig extends WsConfigurerAdapter {
+
+    private final WebServiceConfigProperties properties;
+
     @Bean
     public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext applicationContext) {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
@@ -24,17 +31,17 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     }
 
     @Bean
-    public XsdSchema pedidoSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("xsd/pedido.xsd"));
+    public XsdSchema xsdSchema() {
+        return new SimpleXsdSchema(new ClassPathResource(properties.getXsdSchema()));
     }
 
-    @Bean(name = "pedidos")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema pedidoSchema) {
+    @Bean("PedidoService")
+    public DefaultWsdl11Definition wsdl11Definition(XsdSchema xsdSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("PedidosPort");
-        wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://rocknewventures.com.br/servicos/pedidos");
-        wsdl11Definition.setSchema(pedidoSchema);
+        wsdl11Definition.setPortTypeName(properties.getWsdlDefinition().getPortName());
+        wsdl11Definition.setLocationUri(properties.getLocationUri());
+        wsdl11Definition.setTargetNamespace(properties.getWsdlDefinition().getTargetNamespace());
+        wsdl11Definition.setSchema(xsdSchema);
         return wsdl11Definition;
     }
 }

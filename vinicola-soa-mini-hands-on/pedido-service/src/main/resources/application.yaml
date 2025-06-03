@@ -5,3 +5,12 @@ server:
 spring:
   application:
     name: pedido-service
+
+br.com.rocknewventures.pedidoservice.config:
+  webservice:
+    location-uri: /ws
+    xsd-schema: xsd/pedido.xsd
+    wsdl-definition:
+      port-name: PedidoPort
+      service-name: PedidoService
+      target-namespace: http://rocknewventures.com.br/pedidos
