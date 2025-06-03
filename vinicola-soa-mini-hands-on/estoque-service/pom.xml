@@ -22,6 +22,13 @@
       <version>3.3.12</version>
       <scope>test</scope>
     </dependency>
+    <!-- Lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+      <version>1.18.36</version>
+    </dependency>
     <dependency>
         <groupId>wsdl4j</groupId>
         <artifactId>wsdl4j</artifactId>
@@ -55,10 +62,10 @@
     <configuration>
         <!-- <schemaDirectory>src/main/resources/xsd</schemaDirectory> -->
         <xjbSources>
-            <xjbSource>src/main/resources/global.xjb</xjbSource>
+            <xjbSource>${project.basedir}/src/main/resources/global.xjb</xjbSource>
         </xjbSources>
         <sources>
-            <source>src/main/resources/xsd/vinho.xsd</source>
+            <source>${project.basedir}/src/main/resources/xsd/estoque.xsd</source>
         </sources>
         <clearOutputDir>true</clearOutputDir>
         <readOnly>true</readOnly>

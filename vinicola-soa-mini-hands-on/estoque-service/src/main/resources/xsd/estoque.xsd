@@ -1,0 +1,67 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:es="http://rocknewventures.com.br/estoque"
+           targetNamespace="http://rocknewventures.com.br/estoque"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="EstoqueProduto">
+        <xs:sequence>
+            <xs:element name="codigoProduto" type="xs:positiveInteger"/>
+            <xs:element name="sku" type="xs:string"/>
+            <xs:element name="quantidade" type="xs:positiveInteger"/>
+            <xs:element name="dataValidade" type="xs:date"/>
+            <xs:element name="precoUnitario" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="ObterEstoqueProdutoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sku" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ObterEstoqueProdutoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="item" type="es:EstoqueProduto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Nova operação: AtualizarEstoqueProduto -->
+    <xs:element name="AtualizarEstoqueProdutoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sku" type="xs:string"/>
+                <xs:element name="novaQuantidade" type="xs:positiveInteger"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AtualizarEstoqueProdutoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="status" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Nova operação: RemoverEstoqueProduto -->
+    <xs:element name="RemoverEstoqueProdutoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sku" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="RemoverEstoqueProdutoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="status" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

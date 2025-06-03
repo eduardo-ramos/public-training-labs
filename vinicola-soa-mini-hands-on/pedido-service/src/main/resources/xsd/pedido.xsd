@@ -3,11 +3,55 @@
            targetNamespace="http://rocknewventures.com.br/pedidos"
            elementFormDefault="qualified">
 
-    <xs:complexType name="Pedido">
+    <!-- Tipo Endereco -->
+    <xs:complexType name="Endereco">
+        <xs:sequence>
+            <xs:element name="logradouro" type="xs:string"/>
+            <xs:element name="numero" type="xs:string"/>
+            <xs:element name="complemento" type="xs:string" minOccurs="0"/>
+            <xs:element name="bairro" type="xs:string"/>
+            <xs:element name="cidade" type="xs:string"/>
+            <xs:element name="estado" type="xs:string"/>
+            <xs:element name="cep" type="xs:string"/>
+            <xs:element name="pais" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Tipo DadosCliente -->
+    <xs:complexType name="DadosCliente">
         <xs:sequence>
             <xs:element name="idCliente" type="xs:int"/>
+            <xs:element name="nome" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="telefone" type="xs:string" minOccurs="0"/>
+            <xs:element name="cpfCnpj" type="xs:string"/>
+            <xs:element name="enderecoCobranca" type="pd:Endereco"/>
+            <xs:element name="enderecoEntrega" type="pd:Endereco"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Pedido atualizado -->
+    <xs:complexType name="Pedido">
+        <xs:sequence>
+            <xs:element name="dadosCliente" type="pd:DadosCliente"/>
+            <xs:element name="dataPedido" type="xs:date"/>
+            <xs:element name="valorTotal" type="xs:decimal"/>
+            <xs:element name="valorImpostos" type="xs:decimal"/>
+            <xs:element name="valorTotalComImpostos" type="xs:decimal"/>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="observacoes" type="xs:string" minOccurs="0"/>
+            <xs:element name="items" type="pd:ItemPedido" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ItemPedido">
+        <xs:sequence>
             <xs:element name="codigoProduto" type="xs:string"/>
+            <xs:element name="nomeProduto" type="xs:string"/>
             <xs:element name="quantidade" type="xs:int"/>
+            <xs:element name="precoUnitario" type="xs:decimal"/>
+            <xs:element name="valorTotalItem" type="xs:decimal"/>
+            <xs:element name="observacaoItem" type="xs:string" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -23,7 +67,6 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="codigoPedido" type="xs:ID" />
-                <xs:element name="status" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

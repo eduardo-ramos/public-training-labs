@@ -29,7 +29,6 @@ public class PedidoServiceEndpoint {
     public CriarPedidoResponse criarPedido(@RequestPayload CriarPedidoRequest request) {
         CriarPedidoResponse response = new CriarPedidoResponse();
         response.setCodigoPedido(repository.criarPedido(request.getPedido()).toString());
-        response.setStatus("Pedido cadastrado com sucesso para o produto " + request.getPedido().getCodigoProduto());
         return response;
     }
 

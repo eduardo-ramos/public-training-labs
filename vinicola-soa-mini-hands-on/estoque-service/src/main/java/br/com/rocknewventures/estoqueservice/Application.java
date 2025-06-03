@@ -1,4 +1,4 @@
-package br.com.rocknewventures;
+package br.com.rocknewventures.estoqueservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

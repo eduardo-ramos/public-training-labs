@@ -1,4 +1,4 @@
-package br.com.rocknewventures.config;
+package br.com.rocknewventures.estoqueservice.config;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -12,9 +12,16 @@ import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
+import br.com.rocknewventures.estoqueservice.config.properties.WebServiceConfigProperties;
+import lombok.RequiredArgsConstructor;
+
 @EnableWs
 @Configuration
+@RequiredArgsConstructor
 public class WebServiceConfig extends WsConfigurerAdapter {
+
+    private final WebServiceConfigProperties properties;
+
     @Bean
     public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext applicationContext) {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
@@ -24,17 +31,17 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     }
 
     @Bean
-    public XsdSchema vinhoSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("xsd/vinho.xsd"));
+    public XsdSchema xsdSchema() {
+        return new SimpleXsdSchema(new ClassPathResource(properties.getXsdSchema()));
     }
 
-    @Bean(name = "vinhos")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema vinhoSchema) {
+    @Bean("EstoqueService")
+    public DefaultWsdl11Definition wsdl11Definition(XsdSchema xsdSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("CadastroVinhoPort");
-        wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://vinicola.com.br/vinhos");
-        wsdl11Definition.setSchema(vinhoSchema);
+        wsdl11Definition.setPortTypeName(properties.getWsdlDefinition().getPortName());
+        wsdl11Definition.setLocationUri(properties.getLocationUri());
+        wsdl11Definition.setTargetNamespace(properties.getWsdlDefinition().getTargetNamespace());
+        wsdl11Definition.setSchema(xsdSchema);
         return wsdl11Definition;
     }
 }

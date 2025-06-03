@@ -18,6 +18,27 @@
             "mainClass": "br.com.rocknewventures.pedidoservice.Application",
             "projectName": "pedido-service",
             "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=49429 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=pedido-service"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<estoque-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.com.rocknewventures.Application",
+            "projectName": "estoque-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<estoque-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.com.rocknewventures.estoqueservice.Application",
+            "projectName": "estoque-service",
+            "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
     ]

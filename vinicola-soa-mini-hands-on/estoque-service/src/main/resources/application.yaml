@@ -4,4 +4,13 @@ server:
 
 spring:
   application:
-    name: vinicola-soap
+    name: estoque-service
+
+br.com.rocknewventures.estoqueservice.config:
+  webservice:
+    location-uri: /ws
+    xsd-schema: xsd/estoque.xsd
+    wsdl-definition:
+      port-name: EstoquePort
+      service-name: EstoqueService
+      target-namespace: http://rocknewventures.com.br/estoque
