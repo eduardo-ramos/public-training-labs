@@ -89,9 +89,6 @@
         <executions>
           <execution>
             <id>my-compile</id>
-            <goals>
-              <goal>compile</goal>
-            </goals>
             <configuration>
               <source>21</source>
               <release>21</release>
