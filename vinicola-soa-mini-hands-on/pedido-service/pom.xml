@@ -93,6 +93,9 @@
               <goal>compile</goal>
             </goals>
             <configuration>
+              <source>21</source>
+              <release>21</release>
+              <target>21</target>
               <compileSourceRoots>
                 ${project.basedir}/src/main/java
                 ${project.basedir}/target/generated-sources/jaxb
