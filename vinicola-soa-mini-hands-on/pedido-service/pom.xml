@@ -86,12 +86,20 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.14.0</version>
-        <configuration>
-          <compileSourceRoots>
-            ${project.basedir}/src/main/java
-            ${project.basedir}/target/generated-sources/jaxb
-          </compileSourceRoots>
-        </configuration>
+        <executions>
+          <execution>
+            <id>my-compile</id>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+            <configuration>
+              <compileSourceRoots>
+                ${project.basedir}/src/main/java
+                ${project.basedir}/target/generated-sources/jaxb
+              </compileSourceRoots>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
