@@ -37,7 +37,7 @@ public class PedidoServiceEndpoint {
     public ListarPedidosResponse listarPedidos(@RequestPayload ListarPedidosRequest request) {
         ListarPedidosResponse response = new ListarPedidosResponse();
         List<Pedido> listaPedidos = repository.listarPedidos(request.getCodigoPedido());
-        response.getPedidos().addAll(listaPedidos);
+        response.getPedido().addAll(listaPedidos);
         return response;
     }
 }
