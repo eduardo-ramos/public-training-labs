@@ -1,7 +1,6 @@
 package br.com.rocknewventures.estoqueservice.repository;
 
 import java.math.BigInteger;
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
